@@ -14,6 +14,7 @@
 		39C8EAF01EFACC6200483AD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39C8EAEF1EFACC6200483AD6 /* Assets.xcassets */; };
 		39C8EAF31EFACC6200483AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39C8EAF11EFACC6200483AD6 /* LaunchScreen.storyboard */; };
 		39C8EAFE1EFACC6200483AD6 /* WeatherAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EAFD1EFACC6200483AD6 /* WeatherAppTests.m */; };
+		39C8EB0A1EFACC8C00483AD6 /* DownloadWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EB091EFACC8C00483AD6 /* DownloadWeatherData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		39C8EAF91EFACC6200483AD6 /* WeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C8EAFD1EFACC6200483AD6 /* WeatherAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherAppTests.m; sourceTree = "<group>"; };
 		39C8EAFF1EFACC6200483AD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39C8EB081EFACC8C00483AD6 /* DownloadWeatherData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadWeatherData.h; sourceTree = "<group>"; };
+		39C8EB091EFACC8C00483AD6 /* DownloadWeatherData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadWeatherData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				39C8EAE71EFACC6200483AD6 /* AppDelegate.m */,
 				39C8EAE91EFACC6200483AD6 /* ViewController.h */,
 				39C8EAEA1EFACC6200483AD6 /* ViewController.m */,
+				39C8EB081EFACC8C00483AD6 /* DownloadWeatherData.h */,
+				39C8EB091EFACC8C00483AD6 /* DownloadWeatherData.m */,
 				39C8EAEC1EFACC6200483AD6 /* Main.storyboard */,
 				39C8EAEF1EFACC6200483AD6 /* Assets.xcassets */,
 				39C8EAF11EFACC6200483AD6 /* LaunchScreen.storyboard */,
@@ -215,6 +220,7 @@
 			files = (
 				39C8EAEB1EFACC6200483AD6 /* ViewController.m in Sources */,
 				39C8EAE81EFACC6200483AD6 /* AppDelegate.m in Sources */,
+				39C8EB0A1EFACC8C00483AD6 /* DownloadWeatherData.m in Sources */,
 				39C8EAE51EFACC6200483AD6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

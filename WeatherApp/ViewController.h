@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DownloadWeatherData.h"
 
-@interface ViewController : UIViewController
+
+
+@interface ViewController : UIViewController <DownloadWeatherDataDelegate>
+
+@property (strong, nonatomic) DownloadWeatherData *downloadWeatherData;
 
 
 @end
