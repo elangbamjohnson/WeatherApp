@@ -39,33 +39,33 @@
 
 - (void)testDownloadWeatherData
 {
-    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+//    DownloadWeatherData *weatherData;
+//    XCTestExpectation *expectation = [self expectationWithDescription:@"Get Weather data"];
+//    
+//    [weatherData getWeatherData:@"a json url"];
     
-    NSURL *url = [NSURL URLWithString:@"http://www.apple.com"];
-    NSURLSessionTask *task = [self.session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        XCTAssertNil(error, @"dataTaskWithURL error %@", error);
-        
-        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-            NSInteger statusCode = [(NSHTTPURLResponse *) response statusCode];
-            XCTAssertEqual(statusCode, 200, @"status code was not 200; was %d", statusCode);
-        }
-        
-        XCTAssert(data, @"data nil");
-        
-        // do additional tests on the contents of the `data` object here, if you want
-        
-        // when all done, signal the semaphore
-        
-        dispatch_semaphore_signal(semaphore);
-    }];
-    [task resume];
     
-    long rc = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 60.0 * NSEC_PER_SEC));
-    XCTAssertEqual(rc, 0, @"network request timed out");
+//        [[Conector sharedInstance] performAsynchronousRequestWithServerRequest:_srvRequest completionHandler:^(RequestAsynchronousStatus finishStatus, NSData *data) {
+//            if (finishStatus == RequestAsynchronousOK)
+//            {
+//                _data = data;
+//                [self notify:XCTAsyncTestCaseStatusSucceeded];
+//                NSLog(@"Data OK");
+//            }
+//        }];
+//        
+//        [self waitForTimeout:10];
+//        
+//        XCTAssertNotNil(_data, @"Data was nil");
+//    
+//    
+//    
+//    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+//    
     //////////////////////////////////////////////////////////
+//    [self prepare];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     
-    //Call inside background thread
     dispatch_async(queue, ^{
         NSError *error = nil;
         NSURL *url = [NSURL URLWithString:@"http://api.wunderground.com/api/39c6d95e30243c4b/forecast/q/CA/San_Francisco.json"];
@@ -75,6 +75,7 @@
         
         //Call inside Main thread
         if (!error) {
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
                 NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData

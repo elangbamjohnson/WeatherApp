@@ -8,27 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol DownloadWeatherDataDelegate;
+
 
 @interface DownloadWeatherData : NSObject
 
-{
-    id <DownloadWeatherDataDelegate> delegate;
-}
-
-@property (weak) id delegate;
-
-//-(void)getWeatherData:(NSString *)urlStr;
--(void)getWeatherData:(NSString *)urlStr;
-
-
-@end
-
-@protocol DownloadWeatherDataDelegate <NSObject>
-
-@required
-
--(void )updateUI:(NSDictionary *)weatherDict;
-
+-(void)getWeatherData:(NSString *)urlStr completionHandler:(void (^)(NSDictionary *responseObject, NSError *error))completionHandler;
 
 @end
