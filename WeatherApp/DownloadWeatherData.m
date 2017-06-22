@@ -29,7 +29,7 @@
                 NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
                                                                          options:kNilOptions
                                                                            error:nil];
-                [self.delegate downloadDidFinished:jsonDict];
+                [self.delegate updateUI:jsonDict];
             });
         }
     });

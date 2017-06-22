@@ -27,7 +27,7 @@
 
 @required
 
--(void )downloadDidFinished:(NSDictionary *)weatherDict;
+-(void )updateUI:(NSDictionary *)weatherDict;
 
 
 @end

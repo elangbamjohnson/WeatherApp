@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		393311321EFB007D0091C365 /* USStateAbbreviations.plist in Resources */ = {isa = PBXBuildFile; fileRef = 393311311EFB007D0091C365 /* USStateAbbreviations.plist */; };
+		393311351EFB034F0091C365 /* UpdateLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 393311341EFB034F0091C365 /* UpdateLocationViewController.m */; };
+		393311381EFB0CF80091C365 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 393311371EFB0CF80091C365 /* DataManager.m */; };
 		39C8EAE51EFACC6200483AD6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EAE41EFACC6200483AD6 /* main.m */; };
 		39C8EAE81EFACC6200483AD6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EAE71EFACC6200483AD6 /* AppDelegate.m */; };
 		39C8EAEB1EFACC6200483AD6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C8EAEA1EFACC6200483AD6 /* ViewController.m */; };
@@ -28,6 +31,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		393311311EFB007D0091C365 /* USStateAbbreviations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = USStateAbbreviations.plist; sourceTree = "<group>"; };
+		393311331EFB034F0091C365 /* UpdateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateLocationViewController.h; sourceTree = "<group>"; };
+		393311341EFB034F0091C365 /* UpdateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateLocationViewController.m; sourceTree = "<group>"; };
+		393311361EFB0CF80091C365 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		393311371EFB0CF80091C365 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		39C8EAE01EFACC6200483AD6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C8EAE41EFACC6200483AD6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		39C8EAE61EFACC6200483AD6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,12 +96,17 @@
 				39C8EAE71EFACC6200483AD6 /* AppDelegate.m */,
 				39C8EAE91EFACC6200483AD6 /* ViewController.h */,
 				39C8EAEA1EFACC6200483AD6 /* ViewController.m */,
+				393311331EFB034F0091C365 /* UpdateLocationViewController.h */,
+				393311341EFB034F0091C365 /* UpdateLocationViewController.m */,
 				39C8EB081EFACC8C00483AD6 /* DownloadWeatherData.h */,
 				39C8EB091EFACC8C00483AD6 /* DownloadWeatherData.m */,
+				393311361EFB0CF80091C365 /* DataManager.h */,
+				393311371EFB0CF80091C365 /* DataManager.m */,
 				39C8EAEC1EFACC6200483AD6 /* Main.storyboard */,
 				39C8EAEF1EFACC6200483AD6 /* Assets.xcassets */,
 				39C8EAF11EFACC6200483AD6 /* LaunchScreen.storyboard */,
 				39C8EAF41EFACC6200483AD6 /* Info.plist */,
+				393311311EFB007D0091C365 /* USStateAbbreviations.plist */,
 				39C8EAE31EFACC6200483AD6 /* Supporting Files */,
 			);
 			path = WeatherApp;
@@ -200,6 +213,7 @@
 			files = (
 				39C8EAF31EFACC6200483AD6 /* LaunchScreen.storyboard in Resources */,
 				39C8EAF01EFACC6200483AD6 /* Assets.xcassets in Resources */,
+				393311321EFB007D0091C365 /* USStateAbbreviations.plist in Resources */,
 				39C8EAEE1EFACC6200483AD6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +233,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				39C8EAEB1EFACC6200483AD6 /* ViewController.m in Sources */,
+				393311381EFB0CF80091C365 /* DataManager.m in Sources */,
 				39C8EAE81EFACC6200483AD6 /* AppDelegate.m in Sources */,
+				393311351EFB034F0091C365 /* UpdateLocationViewController.m in Sources */,
 				39C8EB0A1EFACC8C00483AD6 /* DownloadWeatherData.m in Sources */,
 				39C8EAE51EFACC6200483AD6 /* main.m in Sources */,
 			);
@@ -416,6 +432,7 @@
 				39C8EB041EFACC6200483AD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39C8EB051EFACC6200483AD6 /* Build configuration list for PBXNativeTarget "WeatherAppTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +441,7 @@
 				39C8EB071EFACC6200483AD6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
