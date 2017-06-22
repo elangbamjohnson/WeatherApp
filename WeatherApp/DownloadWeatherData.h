@@ -18,6 +18,7 @@
 
 @property (weak) id delegate;
 
+//-(void)getWeatherData:(NSString *)urlStr;
 -(void)getWeatherData:(NSString *)urlStr;
 
 

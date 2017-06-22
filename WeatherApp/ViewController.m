@@ -17,6 +17,10 @@
 @property (nonatomic, strong) NSString *weatherUrlStr;
 @property (nonatomic, strong) NSDictionary *jsonResponse;
 
+@property (weak, nonatomic) IBOutlet UILabel *tempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+
 
 @end
 
@@ -41,8 +45,6 @@
         [self.downloadWeatherData getWeatherData:dataManager.urlString];
         
     }
-    
-
     
 }
 
@@ -84,6 +86,8 @@
     
     NSString *lowHighTemp = [NSString stringWithFormat:@"%@º/%@º F",lowTemp,highTemp];
     
+    [self.tempLabel setText:lowHighTemp];
+    
 
     [dayLabel setText:dayStr];
     [tempLabel setText:lowHighTemp];
@@ -98,8 +102,24 @@
 -(void )updateUI:(NSDictionary *)weatherDict {
     
     self.jsonResponse = [weatherDict objectForKey:@"forecast"];
-    [self setLocationName];
-    [self.weatherTableView reloadData];
+    if (self.jsonResponse != nil) {
+        [self setLocationName];
+        [self.weatherTableView reloadData];
+        
+    }else{
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Not match city!" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+//        [alert show];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"No city or State match"
+                                  message:@""
+                                  delegate:self
+                                  cancelButtonTitle:@"Ok"
+                                  otherButtonTitles:nil, nil];
+        
+        [alertView show];
+    }
+   
     
 }
 

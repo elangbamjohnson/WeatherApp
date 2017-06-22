@@ -15,8 +15,6 @@
 @interface ViewController : UIViewController <DownloadWeatherDataDelegate,UITableViewDelegate,UITableViewDataSource>
 - (IBAction)updateLocationAction:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (strong, nonatomic) DownloadWeatherData *downloadWeatherData;
 @property (strong, nonatomic)IBOutlet UITableView *weatherTableView;
 

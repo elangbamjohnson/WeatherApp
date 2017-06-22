@@ -13,8 +13,6 @@
 
 // Your dictionary
 @property (nonatomic,strong) NSString* urlString;
-@property (nonatomic,strong) NSString* stateString;
-@property (nonatomic,strong) NSString* cityString;
 
 
 

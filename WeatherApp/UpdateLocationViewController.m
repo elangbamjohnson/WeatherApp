@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.stateTextField.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -44,15 +45,22 @@
     
     NSString *cityStr = [self.cityTextField.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     NSString *stateStr = self.stateTextField.text;
-    dataManager.stateString = stateStr;
-    dataManager.cityString = cityStr;
-    dataManager = [DataManager sharedInstance];
+    dataManager = [DataManager sharedInstance];    
     dataManager.urlString = [NSString stringWithFormat:@"http://api.wunderground.com/api/39c6d95e30243c4b/forecast/q/%@/%@.json",stateStr,cityStr];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if(range.length + range.location > textField.text.length)
+    {
+        return NO;
+    }
     
-   
-    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return newLength <= 2;
 }
 
 

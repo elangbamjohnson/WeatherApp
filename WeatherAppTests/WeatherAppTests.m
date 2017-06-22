@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DownloadWeatherData.h"
 
 @interface WeatherAppTests : XCTestCase
 
@@ -34,6 +35,29 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (void)testDownloadWeatherData
+{
+    XCTestExpectation *expectation =
+    [self expectationWithDescription:@"HTTP request"];
+    [self.
+     downloadJson:[NSURL URLWithString:@"a json file"]];
+    
+    [self waitForExpectationsWithTimeout:5
+                                 handler:^(NSError *error) {
+                                     // handler is called on _either_ success or
+                                     // failure
+                                     if (error != nil) {
+                                         XCTFail(@"timeout error: %@", error);
+                                     } else {
+                                         XCTAssertNotNil(
+                                                         self.vc.response,
+                                                         @"downloadJson failed to get data");
+                                     }
+                                 }];
+    
+    
 }
 
 @end

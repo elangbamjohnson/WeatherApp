@@ -29,9 +29,7 @@
     {
         // Custom initialization
         _urlString = [[NSString alloc] init];
-        _cityString = [[NSString alloc]init];
-        _stateString = [[NSString alloc]init];
-
+       
     }
     return self;
 }
