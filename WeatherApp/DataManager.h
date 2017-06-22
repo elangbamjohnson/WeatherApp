@@ -11,7 +11,7 @@
 @interface DataManager : NSObject
 + (DataManager*)sharedInstance;
 
-// Your dictionary
+
 @property (nonatomic,strong) NSString* urlString;
 
 
