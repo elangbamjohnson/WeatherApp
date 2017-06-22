@@ -90,7 +90,7 @@
     
     NSString *lowHighTemp = [NSString stringWithFormat:@"%@º/%@º F",lowTemp,highTemp];
     
-    [self.tempLabel setText:lowHighTemp];
+    
     
 
     [dayLabel setText:dayStr];
@@ -108,6 +108,11 @@
     self.jsonResponse = [weatherDict objectForKey:@"forecast"];
     if (self.jsonResponse != nil) {
         [self setLocationName];
+        NSArray *dayArr = [[self.jsonResponse valueForKey:@"simpleforecast"]objectForKey:@"forecastday"];
+        NSString *lowTemp = [[[dayArr objectAtIndex:0]objectForKey:@"low"]objectForKey:@"fahrenheit"];
+        NSString *highTemp = [[[dayArr objectAtIndex:0]objectForKey:@"high"]objectForKey:@"fahrenheit"];
+        NSString *lowHighTemp = [NSString stringWithFormat:@"%@º/%@º F",lowTemp,highTemp];
+        [self.tempLabel setText:lowHighTemp];
         [self.weatherTableView reloadData];
         
     }else{
