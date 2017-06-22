@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     dataManager = [DataManager sharedInstance];
-    dataManager.urlString = [NSString stringWithFormat:@"http://api.wunderground.com/api/39c6d95e30243c4b/forecast/q/CA/San_Francisco.json"];
+    dataManager.urlString = [NSString stringWithFormat:@"http://api.wunderground.com/api/39c6d95e30243c4b/forecast/q/MI/Detroit.json"];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -37,12 +37,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
-    //self.weatherUrlStr = [NSString stringWithFormat:@"http://api.wunderground.com/api/39c6d95e30243c4b/forecast/q/CA/San_Francisco.json"];
     self.downloadWeatherData = [[DownloadWeatherData alloc]init];
-    [self.downloadWeatherData setDelegate:self];
+    
     if (dataManager.urlString) {
-        [self.downloadWeatherData getWeatherData:dataManager.urlString];
+        
+        [self.downloadWeatherData getWeatherData:dataManager.urlString completionHandler:
+         ^(NSDictionary *responseDict, NSError *error) {
+             
+                 [self updateUI:responseDict];
+             
+         }];
         
     }
     
@@ -86,7 +90,7 @@
     
     NSString *lowHighTemp = [NSString stringWithFormat:@"%@º/%@º F",lowTemp,highTemp];
     
-    [self.tempLabel setText:lowHighTemp];
+    
     
 
     [dayLabel setText:dayStr];
@@ -97,18 +101,21 @@
 }
 
 
-#pragma mark - DownloadWeatherDataDelegate
+#pragma mark - Local Methods
 
 -(void )updateUI:(NSDictionary *)weatherDict {
     
     self.jsonResponse = [weatherDict objectForKey:@"forecast"];
     if (self.jsonResponse != nil) {
         [self setLocationName];
+        NSArray *dayArr = [[self.jsonResponse valueForKey:@"simpleforecast"]objectForKey:@"forecastday"];
+        NSString *lowTemp = [[[dayArr objectAtIndex:0]objectForKey:@"low"]objectForKey:@"fahrenheit"];
+        NSString *highTemp = [[[dayArr objectAtIndex:0]objectForKey:@"high"]objectForKey:@"fahrenheit"];
+        NSString *lowHighTemp = [NSString stringWithFormat:@"%@º/%@º F",lowTemp,highTemp];
+        [self.tempLabel setText:lowHighTemp];
         [self.weatherTableView reloadData];
         
     }else{
-//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Not match city!" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//        [alert show];
         
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"No city or State match"

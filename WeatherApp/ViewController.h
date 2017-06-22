@@ -12,7 +12,7 @@
 
 
 
-@interface ViewController : UIViewController <DownloadWeatherDataDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 - (IBAction)updateLocationAction:(id)sender;
 
 @property (strong, nonatomic) DownloadWeatherData *downloadWeatherData;

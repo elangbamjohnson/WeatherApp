@@ -10,33 +10,41 @@
 
 @implementation DownloadWeatherData
 
--(void)getWeatherData:(NSString *)urlStr {
+-(void)getWeatherData:(NSString *)urlStr completionHandler:(void (^)(NSDictionary *responseObject, NSError *error))completionHandler {
+    NSURL *weatherUrl = [NSURL URLWithString:urlStr];
     
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    
-    //Call inside background thread
-    dispatch_async(queue, ^{
-        NSError *error = nil;
-        NSURL *url = [NSURL URLWithString:urlStr];
-        NSString *json = [NSString stringWithContentsOfURL:url
-                                                  encoding:NSASCIIStringEncoding
-                                                     error:&error];
-        
-        //Call inside Main thread
-        if (!error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSData *jsonData = [json dataUsingEncoding:NSASCIIStringEncoding];
-                NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                         options:kNilOptions
-                                                                           error:nil];
-                [self.delegate updateUI:jsonDict];
-            });
+    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:weatherUrl completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (data) {
+            NSError *JSONError = nil;
+            NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+            if (dictionary) {
+                
+                if (completionHandler) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionHandler(dictionary, nil);
+                    });
+                }
+            } else {
+               
+                if (completionHandler) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completionHandler(nil, JSONError);
+                    });
+                }
+            }
+        } else {
+            if (completionHandler) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completionHandler(nil, error);
+                });
+            }
+           
         }
-    });
+    }];
     
-    
-    
+    [task resume];
+        
+        
 }
-
 
 @end
